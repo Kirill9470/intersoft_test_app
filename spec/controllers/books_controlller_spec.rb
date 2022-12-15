@@ -19,8 +19,9 @@ RSpec.describe BooksController, type: :controller do
                             start_date: '2021',
                             end_date: '2022' }
 
+      body = JSON.parse(response.body)
       expect(response).to have_http_status(:ok)
-      expect(JSON.parse(response.body).count).to eq(4)
+      expect(body['books'].count).to eq(4)
     end
 
   end

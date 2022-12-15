@@ -11,7 +11,6 @@ class Book::Create
   private
 
   def validate_params
-    p context.book_params
     require_params.each do |params|
       context.fail!(error: "#{params} missing", code: :unprocessable_entity) if context.book_params[params].blank?
     end
