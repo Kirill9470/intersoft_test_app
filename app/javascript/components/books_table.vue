@@ -10,16 +10,15 @@
                     <div class="col-md-3">
                         <label for="formSearchInput2" class="form-label">по автору</label>
                         <select class="form-select" aria-label="Default select example" id="formSearchInput2" v-model="author">
-                            <option value="Кирилл Сидоров">Кирилл Сидоров</option>
-                            <option value="2">One</option>
-                            <option value="3">Two</option>
-                            <option value="4">Three</option>
+                            <option value=""></option>
+                            <option v-for="author in authors" :value="author">{{ author }}</option>
                         </select>
                     </div>
                     <div class="col-md-2">
                         <label for="formSearchInput3" class="form-label">с</label>
 
                         <select class="form-select" aria-label="Default select example" id="formSearchInput3" v-model="start_date">
+                            <option value=""></option>
                             <option v-for="year in years" :value="year">{{ year }}</option>
                         </select>
                     </div>
@@ -28,6 +27,7 @@
                         <label for="formSearchInput4" class="form-label">по</label>
 
                         <select class="form-select" aria-label="Default select example" id="formSearchInput4" v-model="end_date">
+                            <option value=""></option>
                             <option v-for="year in years" :value="year">{{ year }}</option>
                         </select>
                     </div>
@@ -78,7 +78,7 @@
 <script>
     export default {
         name: "books_table",
-        props: ['books', 'prependOpenEditModal', 'prependOpenCreateModal', 'determineBooksCollection'],
+        props: ['books', 'prependOpenEditModal', 'prependOpenCreateModal', 'determineBooksCollection', 'authors'],
         methods: {
             openEditModal(book){
                 let authorFullName = book.author.split(' ');

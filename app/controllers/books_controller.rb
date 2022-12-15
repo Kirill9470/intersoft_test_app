@@ -15,7 +15,6 @@ class BooksController < ApplicationController
   end
 
   def create
-    p book_params
     result = Book::Create.call(book_params: book_params.to_h.symbolize_keys)
 
     if result.success?

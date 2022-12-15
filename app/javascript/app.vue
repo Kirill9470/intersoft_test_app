@@ -9,6 +9,7 @@
             <div class="col-9">
                 <BooksTable ref="BooksTable"
                             :books="books"
+                            :authors="authors"
                             :prependOpenEditModal="prependOpenEditModal"
                             :prependOpenCreateModal="prependOpenCreateModal"
                             :determineBooksCollection="determineBooksCollection"/>
@@ -41,6 +42,7 @@
             getBooks() {
                 this.axios.get('http://localhost:3000/books', { params: this.query }).then((response) => {
                     this.diagram_data = response.data.meta.books_years_info;
+                    this.authors = response.data.meta.authors;
                     this.books = response.data.books
                 });
             },
@@ -65,6 +67,7 @@
             return {
                 diagram_data: [],
                 books: [],
+                authors: [],
                 title_modal: 'Добавить новую книгу',
                 book: {id: null, name: null, date: null, surname_author: null, name_author: null},
                 query: {name: null, author: null, start_date: null, end_date: null},
